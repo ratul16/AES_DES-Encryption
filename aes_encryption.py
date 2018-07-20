@@ -11,7 +11,9 @@ ciphertxt = cipher.encrypt(plaintxt)
 encryptxt = str(binascii.hexlify(ciphertxt),'ascii')
 filew.write(encryptxt)
 
-decryptxt = cipher.decrypt(ciphertxt)
-print (decryptxt)
+plain = open("plain.txt","w")
+deciphertxt = cipher.decrypt(ciphertxt)
+decryptxt = deciphertxt.decode("ascii")
+plain.write(decryptxt)
 
 
