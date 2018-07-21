@@ -28,9 +28,6 @@ class AESCipher:
 
 key = open("key.txt",'r')
 cipher = AESCipher(key.read())
-#a =  key.read()
-#print(a)
-
 
 choice = input("Press 'e' to Encrypt : \nPress 'd' to Decrypt : \n")
 if choice == 'e' :
@@ -39,6 +36,7 @@ if choice == 'e' :
     inputtxt = filer.read()
     encrypted = cipher.encrypt(inputtxt)
     filew.write(str(encrypted))
+    print("Encrypted text : " +str(encrypted))
 
 elif choice == 'd' :
     filer = open("input.txt",'r')
@@ -47,3 +45,4 @@ elif choice == 'd' :
     encrypted = cipher.encrypt(inputtxt)
     decrypted = cipher.decrypt(encrypted)
     filew.write(str(decrypted))
+    print("Decrypted text : " +str(decrypted))
