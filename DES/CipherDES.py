@@ -11,23 +11,25 @@ def pad(text):
 
 des = DES.new(key, DES.MODE_ECB)
 
+chioce = input("1.Press 'e' to Encrypt:\n2.Press 'd' to Decrypt:\n")
 
-choice = input("Press 'e' to Encrypt : \nPress 'd' to Decrypt : \n")
+if chioce == 'e' :
+    text = open("input.txt",'r')
+    textw = open("cipher.txt",'w')
+    inputtxt = text.read()
+    cipher = pad(inputtxt)
+    encrypted = des.encrypt(cipher)
+    textw.write(str(encrypted))
+    print ("Encrypted Text :"+str(encrypted))
 
-if choice == 'e' :
-    filer = open("input.txt","r")
-    filew = open("cipher.txt","w")
-    plaintxt = filer.read()
-    paddedtxt = pad(plaintxt)
-    ciphertxt = des.encrypt(paddedtxt)
-    encrypt = str(base64.b64encode(ciphertxt))
-    filew.write(encrypt)
+elif chioce == 'd' :
+    text = open("input.txt",'r')
+    textw = open("plain.txt",'w')
+    inputtxt = text.read()
+    cipher = pad(inputtxt)
+    encrypted = des.encrypt(cipher)
+    decrypted = des.decrypt(encrypted)
+    textw.write(str(decrypted))
+    print ("Decrypted Text :"+str(decrypted))
 
-elif choice == 'd' :
-    filer = open("cipher.txt","r")
-    filew = open("plain.txt","w")
-    ciphertxt = filer.read()
-    paddedtxt = pad(ciphertxt)
-    decipher = des.decrypt(paddedtxt)
-    decrypt =str(base64.b64decode(decipher))
-    filew.write(decrypt)
+
